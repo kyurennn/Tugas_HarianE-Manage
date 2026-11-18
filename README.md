@@ -1,6 +1,4 @@
-# Student Directory 🎓
-
-Aplikasi web sederhana **Student Directory** (Direktori Mahasiswa) yang dibangun untuk memenuhi tugas mata kuliah **Perancangan dan Pemrograman Web (S1 Rekayasa Perangkat Lunak)** sesuai dengan capaian materi praktikum **Modul 1 sampai Modul 10**.
+# Student Directory 
 
 Aplikasi ini mendemonstrasikan integrasi *full-stack* modern:
 - **Frontend**: Antarmuka pengguna responsif berbasis React.js dan Vite yang mengonsumsi data via Fetch API.
