@@ -1,6 +1,6 @@
 # Student Directory
 
-Aplikasi web sederhana untuk menampilkan daftar mahasiswa dari database PostgreSQL menggunakan React (Vite) di sisi frontend dan NestJS + Prisma ORM di sisi backend.
+Aplikasi web sederhana untuk mengelola data mahasiswa (CRUD) menggunakan React (Vite) di sisi frontend dan NestJS + Prisma ORM + PostgreSQL di sisi backend.
 
 ## Tech Stack
 
@@ -17,7 +17,7 @@ Aplikasi web sederhana untuk menampilkan daftar mahasiswa dari database PostgreS
 
 ### 1. Siapkan Database
 
-Buat database PostgreSQL baru bernama `student_directory`:
+Buat database PostgreSQL bernama `student_directory`:
 
 ```sql
 CREATE DATABASE student_directory;
@@ -70,18 +70,21 @@ Frontend berjalan di `http://localhost:5173`.
 
 | Method | Endpoint | Deskripsi |
 |---|---|---|
-| `GET` | `/students` | Mengambil semua data mahasiswa (diurutkan berdasarkan NIM) |
+| `GET` | `/students` | Mengambil semua data mahasiswa (mendukung query `?search=...` dan `?entryYear=...`) |
+| `GET` | `/students/stats` | Statistik jumlah total mahasiswa dan jumlah per angkatan |
 | `GET` | `/students/:id` | Mengambil detail satu mahasiswa berdasarkan ID (`404` jika tidak ditemukan) |
+| `POST` | `/students` | Menambahkan data mahasiswa baru (`409` jika NIM sudah terdaftar) |
+| `PATCH` | `/students/:id` | Memperbarui data mahasiswa berdasarkan ID |
+| `DELETE` | `/students/:id` | Menghapus data mahasiswa berdasarkan ID |
 
-Contoh response `GET /students/:id`:
+Contoh body `POST /students`:
 
 ```json
 {
-  "id": "59d7d103-c95b-47f1-b351-751d09661418",
-  "nim": "103022000130",
-  "name": "Joko Susilo",
+  "nim": "103022400099",
+  "name": "Raka Pratama",
   "studyProgram": "S1 Rekayasa Perangkat Lunak",
-  "entryYear": 2020,
-  "email": "jokosusilo@student.telkomuniversity.ac.id"
+  "entryYear": 2024,
+  "email": "rakapratama@student.telkomuniversity.ac.id"
 }
 ```

@@ -1,11 +1,6 @@
 import React from 'react';
 
-/**
- * Komponen StudentTable
- * Bertugas menampilkan data mahasiswa dalam format tabel akademik yang rapi dan terstruktur.
- * Menerima props `students` yang merupakan array data mahasiswa dari backend PostgreSQL.
- */
-function StudentTable({ students }) {
+function StudentTable({ students, onEdit, onDelete }) {
   return (
     <div className="table-responsive">
       <table className="student-table">
@@ -17,6 +12,7 @@ function StudentTable({ students }) {
             <th>Program Studi</th>
             <th>Angkatan</th>
             <th>Email</th>
+            <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +27,22 @@ function StudentTable({ students }) {
               </td>
               <td className="cell-email">
                 <a href={`mailto:${student.email}`}>{student.email}</a>
+              </td>
+              <td className="cell-actions">
+                <button
+                  type="button"
+                  className="btn-action btn-edit"
+                  onClick={() => onEdit(student)}
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  className="btn-action btn-delete"
+                  onClick={() => onDelete(student)}
+                >
+                  Hapus
+                </button>
               </td>
             </tr>
           ))}
