@@ -7,4 +7,4 @@ import { StudentsModule } from './students/students.module.js';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
